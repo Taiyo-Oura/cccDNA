@@ -1,11 +1,42 @@
 # cccDNA_simulation
-This code is an analysis code for the paper "Quantification of hepatitis B virus replication dynamics in a tetracycline-off inducible cell model"
 
-## Desciption
-Mathematical models describing the cccDNA and intracellular HBVDNA dynamics are stored in R
+This repository contains the analysis code for the paper:
+
+**“Quantification of hepatitis B virus replication dynamics in a tetracycline-off inducible cell model”**
+
+## Overview
+
+This repository provides the computational workflow used to analyze intracellular HBV DNA and cccDNA dynamics in a tetracycline-off inducible cell system. The code combines experimental time-course data with ordinary differential equation models to estimate model parameters, quantify uncertainty, and generate the main figures used in the manuscript.
+
+## Repository structure
+
+- `final.c`  
+  C code defining the ODE systems used for model fitting and validation.
+
+- `*.R`  
+  R scripts for parameter estimation, MCMC-based uncertainty analysis, simulation, and figure generation.
+
+- `data/`  
+  Experimental data used for model fitting under Conditions 1–4.
+
+- `data_kakunin/`  
+  Experimental data used for validation under Conditions 5–8.
+
+- `kakunin/`  
+  Intermediate outputs such as saved MCMC objects and sensitivity-analysis results.
+
+- `fig/`  
+  Generated figures.
 
 ## Data availability
-The data used for the analysis is in the “data” folder.
+
+The experimental data used in this study are included in the `data/` and `data_kakunin/` folders.
 
 ## Code availability
-The code used for the analysis is in the main folder.
+
+All scripts required to reproduce the main analyses are included in this repository.
+
+## Notes
+
+- The model fitting for Conditions 1–4 and the validation analysis for Conditions 5–8 are handled separately in the code.
+- The analysis was performed in R, with the ODE models compiled from C code for computational efficiency.
