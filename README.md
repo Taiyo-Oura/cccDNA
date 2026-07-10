@@ -28,6 +28,11 @@ This repository provides the computational workflow used to analyze intracellula
 - `fig/`  
   Generated figures.
 
+- `supplementary/`  
+
+  Supplementary figures and supplementary data generated for the revised manuscript, including replicate-level measurements used in Supplementary Fig. S1 and the λ–r parameter-correlation analysis shown in Supplementary Fig. S2.
+  
+
 ## Data availability
 
 The experimental data used in this study are included in the `data/` and `data_kakunin/` folders.
