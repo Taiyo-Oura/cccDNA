@@ -91,3 +91,63 @@ For example:
 ```r
 setwd("code_and_data")
 source("figS2.R")
+
+```
+
+Some scripts determine their working directory automatically using:
+
+```r
+CURRENT_WORKING_DIR <- dirname(
+  rstudioapi::getActiveDocumentContext()$path
+)
+setwd(CURRENT_WORKING_DIR)
+```
+
+Therefore, these scripts should be opened and executed directly in RStudio.
+
+The C source file `final.c` is compiled from R within the relevant analysis scripts. Compiled object and shared-library files are not included in the repository because they are generated locally and may depend on the operating system and R environment.
+
+## Data availability
+
+The experimental time-course data used for model fitting and validation are included in the `code_and_data/data/` and `code_and_data/data_kakunin/` folders.
+
+Replicate-level raw measurements are provided in the `code_and_data/rawdata/` folder.
+
+Supplementary figures and associated processed data are provided in the `code_and_data/supplementary/` folder.
+
+## Code availability
+
+All scripts required to reproduce the main analyses, validation analyses, uncertainty calculations, predictive intervals, and associated figures are included in this repository.
+
+## Requirements
+
+The analysis was performed in R.
+
+The ordinary differential equation models were implemented in C and compiled from R for computational efficiency.
+
+The main R packages used in the analysis include:
+
+- `deSolve`
+- `FME`
+- `ggplot2`
+- `dplyr`
+- `tidyr`
+- `purrr`
+- `patchwork`
+- `rstudioapi`
+
+A working C compiler is required to compile `final.c`.
+
+## Notes
+
+- Conditions 1–4 were used for model fitting.
+- Conditions 5–8 were used for independent validation.
+- No parameter refitting was performed for Conditions 5–8.
+- Model fitting was performed on the log-transformed scale.
+- The MCMC-derived uncertainty intervals represent uncertainty arising from parameter estimation.
+- The predictive intervals additionally incorporate residual observation error estimated from Conditions 1–4.
+- The ODE models are compiled from `final.c` before model simulation.
+
+## License
+
+The license for this repository is provided in the `LICENSE` file.
