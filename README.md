@@ -17,32 +17,34 @@ The workflow combines experimental time-course measurements with ordinary differ
 - examine parameter relationships and practical identifiability, and
 - generate the figures included in the manuscript and Supplementary Information.
 
+All analysis code and data are located in the `code_and_data/` directory.
+
 ## Repository structure
 
-- `final.c`  
+- `code_and_data/final.c`  
   C source code defining the ordinary differential equation systems used for model fitting and validation.
 
-- `*.R`  
+- `code_and_data/*.R`  
   R scripts for parameter estimation, MCMC-based uncertainty analysis, model simulation, validation, sensitivity analysis, parameter-correlation analysis, and figure generation.
 
-- `data/`  
+- `code_and_data/data/`  
   Experimental time-course data used for model fitting under Conditions 1–4.
 
-- `data_kakunin/`  
+- `code_and_data/data_kakunin/`  
   Independent experimental time-course data used for model validation under Conditions 5–8.
 
-- `kakunin/`  
+- `code_and_data/kakunin/`  
   Intermediate analysis outputs, including saved MCMC objects and sensitivity-analysis results.
 
-- `fig/`  
+- `code_and_data/fig/`  
   Figures generated from the main analysis scripts.
 
-- `rawdata/`  
+- `code_and_data/rawdata/`  
   Replicate-level measurements of intracellular HBV DNA and cccDNA.
 
-- `supplementary/`  
+- `code_and_data/supplementary/`  
   Scripts, figures, and data associated with the Supplementary Information. This folder includes:
-  
+
   - replicate-level measurements and plots used in Fig. S1, and
   - predictive-interval analyses used in Fig. S2.
 
@@ -78,40 +80,14 @@ The relationship between the empirical parameters λ and r was evaluated using M
 
 These analyses were used to assess their practical identifiability and compensatory relationship.
 
-## Data availability
+## Running the analysis
 
-The experimental time-course data used for model fitting and validation are included in the `data/` and `data_kakunin/` folders.
+The analysis scripts are intended to be run in RStudio.
 
-Replicate-level raw measurements are provided in the `rawdata/` folder.
+Open the repository in RStudio, set `code_and_data/` as the working directory, and run the corresponding R scripts.
 
-Supplementary figures and associated processed data are provided in the `supplementary/` folder.
+For example:
 
-## Code availability
-
-All scripts required to reproduce the main analyses, validation analyses, uncertainty calculations, predictive intervals, and associated figures are included in this repository.
-
-## Requirements
-
-The analysis was performed in R.
-
-The ordinary differential equation models were implemented in C and compiled from R for computational efficiency.
-
-The main R packages used in the analysis include:
-
-- `deSolve`
-- `FME`
-- `ggplot2`
-- `dplyr`
-- `tidyr`
-- `purrr`
-- `patchwork`
-
-## Notes
-
-- Conditions 1–4 were used for model fitting.
-- Conditions 5–8 were used for independent validation.
-- No parameter refitting was performed for Conditions 5–8.
-- Model fitting was performed on the log-transformed scale.
-- The MCMC-derived uncertainty intervals represent uncertainty arising from parameter estimation.
-- The predictive intervals additionally incorporate residual observation error estimated from Conditions 1–4.
-- The ODE models are compiled from `final.c` before model simulation.
+```r
+setwd("code_and_data")
+source("figS2.R")
